@@ -1,0 +1,123 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.flight-list {
+  height: 100%;
+  overflow: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.list-header,
+.flight-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 14px 16px;
+}
+
+.list-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  border-bottom: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.flight-row {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #f1f5f9;
+  background: #ffffff;
+  color: #0f172a;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
+
+.flight-row:hover,
+.flight-row.selected {
+  background: #f1f5f9;
+}
+
+.flight-info,
+.route {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.flight-info strong {
+  font-size: 14px;
+}
+
+.flight-info span,
+.route {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.route {
+  flex-direction: row;
+  align-items: center;
+}
+
+.route-arrow {
+  color: #94a3b8;
+}
+
+.status {
+  padding: 5px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.status[data-status='ACTIVE'] {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status[data-status='DELAYED'] {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status[data-status='ARRIVED'] {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.status[data-status='SCHEDULED'] {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.empty-state {
+  padding: 32px 16px;
+  color: #64748b;
+  text-align: center;
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  .list-header,
+  .flight-row {
+    grid-template-columns: 1fr auto;
+  }
+
+  .list-header span:nth-child(2),
+  .route {
+    display: none;
+  }
+}

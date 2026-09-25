@@ -1,0 +1,81 @@
+@if (flight; as selectedFlight) {
+  <section class="details">
+
+    <div class="details-header">
+      <div>
+        <span class="eyebrow">FLIGHT DETAILS</span>
+        <h2>{{ selectedFlight.flightNumber }}</h2>
+        <span class="callsign">
+          {{ selectedFlight.callsign }}
+        </span>
+      </div>
+
+      <span
+        class="status"
+        [attr.data-status]="selectedFlight.status">
+        {{ selectedFlight.status }}
+      </span>
+    </div>
+
+    <div class="route-card">
+      <div class="airport">
+        <strong>{{ selectedFlight.origin.code }}</strong>
+        <span>{{ selectedFlight.origin.city }}</span>
+      </div>
+
+      <div class="route-line">
+        <span></span>
+        <span>✈</span>
+        <span></span>
+      </div>
+
+      <div class="airport destination">
+        <strong>{{ selectedFlight.destination.code }}</strong>
+        <span>{{ selectedFlight.destination.city }}</span>
+      </div>
+    </div>
+
+    <div class="detail-grid">
+
+      <div class="detail-item">
+        <span>Aircraft Type</span>
+        <strong>{{ selectedFlight.aircraftType }}</strong>
+      </div>
+
+      <div class="detail-item">
+        <span>Origin</span>
+        <strong>{{ selectedFlight.origin.name }}</strong>
+      </div>
+
+      <div class="detail-item">
+        <span>Destination</span>
+        <strong>{{ selectedFlight.destination.name }}</strong>
+      </div>
+
+      <div class="detail-item">
+        <span>Estimated Departure</span>
+        <strong>
+          {{ selectedFlight.estimatedDeparture | date: 'dd MMM yyyy, HH:mm' }}
+        </strong>
+      </div>
+
+      <div class="detail-item">
+        <span>Estimated Arrival</span>
+        <strong>
+          {{ selectedFlight.estimatedArrival | date: 'dd MMM yyyy, HH:mm' }}
+        </strong>
+      </div>
+
+    </div>
+
+  </section>
+} @else {
+  <section class="empty-details">
+    <div class="empty-icon">✈</div>
+    <h2>Select a flight</h2>
+    <p>
+      Choose a flight from the map or flight list
+      to view its operational details.
+    </p>
+  </section>
+}

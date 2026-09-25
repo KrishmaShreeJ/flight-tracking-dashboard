@@ -1,0 +1,17 @@
+<div
+  #mapContainer
+  class="map"
+  aria-label="Flight tracking map">
+</div>
+
+@if (flights.length === 0) {
+  <div class="map-empty-state">
+    <div class="map-empty-icon">✈</div>
+
+    <strong>No flights found</strong>
+
+    <span>
+      Try adjusting your filters to see available flights.
+    </span>
+  </div>
+}

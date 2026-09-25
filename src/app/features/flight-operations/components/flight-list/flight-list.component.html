@@ -1,0 +1,35 @@
+<div class="flight-list">
+  <div class="list-header">
+    <span>Flight</span>
+    <span>Route</span>
+    <span>Status</span>
+  </div>
+
+  @for (flight of flights; track flight.flightNumber) {
+    <button
+      type="button"
+      class="flight-row"
+      [class.selected]="selectedFlight?.flightNumber === flight.flightNumber"
+      (click)="selectFlight(flight)"
+    >
+      <div class="flight-info">
+        <strong>{{ flight.flightNumber }}</strong>
+        <span>{{ flight.callsign }}</span>
+      </div>
+
+      <div class="route">
+        <span>{{ flight.origin.code }}</span>
+        <span class="route-arrow">→</span>
+        <span>{{ flight.destination.code }}</span>
+      </div>
+
+      <span class="status" [attr.data-status]="flight.status">
+        {{ flight.status }}
+      </span>
+    </button>
+  } @empty {
+    <div class="empty-state">
+      No flights match the selected filters.
+    </div>
+  }
+</div>

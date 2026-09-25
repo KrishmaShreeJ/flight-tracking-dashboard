@@ -1,0 +1,48 @@
+<form class="filters" [formGroup]="filterForm">
+  <div class="filter-field">
+    <label for="callsign">Callsign</label>
+    <input
+      id="callsign"
+      type="text"
+      formControlName="callsign"
+      placeholder="Search callsign"
+    />
+  </div>
+
+  <div class="filter-field">
+    <label for="status">Status</label>
+    <select id="status" formControlName="status">
+      <option value="">All statuses</option>
+
+      @for (status of statuses; track status) {
+        <option [value]="status">{{ status }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="filter-field">
+    <label for="origin">Origin</label>
+    <select id="origin" formControlName="origin">
+      <option value="">All origins</option>
+
+      @for (airport of airports; track airport) {
+        <option [value]="airport">{{ airport }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="filter-field">
+    <label for="destination">Destination</label>
+    <select id="destination" formControlName="destination">
+      <option value="">All destinations</option>
+
+      @for (airport of airports; track airport) {
+        <option [value]="airport">{{ airport }}</option>
+      }
+    </select>
+  </div>
+
+  <button type="button" class="clear-button" (click)="clearFilters()">
+    Clear
+  </button>
+</form>

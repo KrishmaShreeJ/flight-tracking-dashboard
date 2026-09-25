@@ -1,0 +1,129 @@
+<!-- <div class="dashboard">
+  <header class="dashboard-header">
+    <div>
+      <span class="eyebrow">AVIATION OPERATIONS</span>
+      <h1>Flight Operations Dashboard</h1>
+      <p>Real-time operational overview of active and scheduled flights.</p>
+    </div>
+  </header>
+
+  <main class="dashboard-content">
+    <section class="kpi-section">
+      <div class="section-placeholder">
+        KPI CARDS
+      </div>
+    </section>
+
+    <section class="operations-section">
+      <div class="section-placeholder">
+        FLIGHT OPERATIONS
+      </div>
+    </section>
+  </main>
+</div> -->
+<div class="dashboard">
+  <header class="dashboard-header">
+    <div class="brand">
+      <div class="brand-mark">✈</div>
+
+      <div>
+        <span class="eyebrow">AVIATION OPERATIONS</span>
+        <h1>Flight Operations</h1>
+        <p>Live operational overview and flight tracking</p>
+      </div>
+    </div>
+
+    <div class="header-status">
+      <span class="status-dot"></span>
+      <span>Operations Online</span>
+    </div>
+  </header>
+
+  <main class="dashboard-content">
+
+    <section class="kpi-grid">
+      <app-kpi-card
+        label="Total Flights"
+        [value]="totalFlights"
+        icon="✈"
+      />
+
+      <app-kpi-card
+        label="Active Flights"
+        [value]="activeFlights"
+        icon="◉"
+      />
+
+      <app-kpi-card
+        label="Delayed Flights"
+        [value]="delayedFlights"
+        icon="!"
+      />
+
+      <app-kpi-card
+        label="Arrived Flights"
+        [value]="arrivedFlights"
+        icon="✓"
+      />
+    </section>
+
+    <section class="filters-section">
+      <app-flight-filters
+        [airports]="airportCodes"
+        (filtersChanged)="onFiltersChanged($event)"
+        (filtersCleared)="onFiltersCleared()"
+      />
+    </section>
+
+    <section class="operations-grid">
+
+      <div class="map-panel">
+        <div class="panel-header">
+          <div>
+            <span class="panel-eyebrow">LIVE MAP</span>
+            <h2>Flight Tracking</h2>
+          </div>
+
+          <span class="flight-count">
+            {{ filteredFlights.length }} flights
+          </span>
+        </div>
+
+        <div class="map-container">
+          <app-flight-map
+            [flights]="filteredFlights"
+            [selectedFlight]="selectedFlight"
+            (flightSelected)="onFlightSelected($event)"
+          />
+        </div>
+      </div>
+
+      <aside class="details-panel">
+        <app-flight-details
+          [flight]="selectedFlight"
+        />
+      </aside>
+
+    </section>
+
+    <section class="flight-list-section">
+      <div class="panel-header">
+        <div>
+          <span class="panel-eyebrow">FLIGHT OPERATIONS</span>
+          <h2>Flights</h2>
+        </div>
+
+        <span class="flight-count">
+          {{ filteredFlights.length }} results
+        </span>
+      </div>
+
+      <app-flight-list
+        [flights]="filteredFlights"
+        [selectedFlight]="selectedFlight"
+        (flightSelected)="onFlightSelected($event)"
+      />
+    </section>
+
+  </main>
+</div>
